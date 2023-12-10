@@ -9,7 +9,16 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        ContentUnavailableView("No snipets", systemImage: "swift", description: Text("You don't have any saved snippets"))
+        ContentUnavailableView {
+            Label("No snippets", systemImage: "swift")
+        } description: {
+            Text("You don't have any saved snippets yet.")
+        } actions: {
+            Button("Create snippet") {
+                // create a snippet
+            }
+            .buttonStyle(.borderedProminent)
+        }
     }
 }
 
