@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var showingConfirmation = false
+    
     var body: some View {
         ContentUnavailableView {
             Label("No snippets", systemImage: "swift")
@@ -15,9 +17,14 @@ struct ContentView: View {
             Text("You don't have any saved snippets yet.")
         } actions: {
             Button("Create snippet") {
-                // create a snippet
+                showingConfirmation.toggle()
             }
             .buttonStyle(.borderedProminent)
+            .confirmationDialog("Confirmation dialog", isPresented: $showingConfirmation) {
+                Text("Confirmation!")
+            } message: {
+                Text("Confirmation message")
+            }
         }
     }
 }
